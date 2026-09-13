@@ -12,7 +12,7 @@ The release contains:
 
 - `gmcl_sourcenet_win32.dll` / `gmsv_sourcenet_win32.dll` — Windows x86 client/server modules
 - `gmcl_sourcenet_win64.dll` / `gmsv_sourcenet_win64.dll` — Windows x64 client/server modules
-- `gmcl_sourcenet_linux.dll` / `gmsv_sourcenet_linux.dll` — Linux x86 client/server modules
+- `gmcl_sourcenet_linux32.dll` / `gmsv_sourcenet_linux32.dll` — Linux x86 client/server modules
 - `gmcl_sourcenet_linux64.dll` / `gmsv_sourcenet_linux64.dll` — Linux x64 client/server modules
 
 ## Compiling

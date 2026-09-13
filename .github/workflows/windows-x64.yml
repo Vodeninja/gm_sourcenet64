@@ -3,7 +3,7 @@ name: Build modules
 on:
   push:
     branches: ["**"]
-    tags: ["v*"]
+    tags: ["v*", "[0-9]*"]
   pull_request:
 
 permissions:
@@ -127,6 +127,8 @@ jobs:
           release="$RUNNER_TEMP/sourcenet-linux"
           mkdir -p "$release"
           find projects/linux/gmake -type f -path '*/Release/*.dll' -exec cp {} "$release" \;
+          mv "$release/gmcl_sourcenet_linux.dll" "$release/gmcl_sourcenet_linux32.dll"
+          mv "$release/gmsv_sourcenet_linux.dll" "$release/gmsv_sourcenet_linux32.dll"
           test "$(find "$release" -maxdepth 1 -type f -name '*.dll' | wc -l)" -eq 4
           echo "RELEASE_DIRECTORY=$release" >> "$GITHUB_ENV"
 
