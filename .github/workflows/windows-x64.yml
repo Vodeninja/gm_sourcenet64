@@ -78,22 +78,27 @@ jobs:
   linux:
     name: Build Linux x86 and x64 modules
     runs-on: ubuntu-22.04
-    container:
-      image: danielga/steamrt-scout:latest
 
     env:
       GARRYSMOD_COMMON_BRANCH: x86-64-support-sourcesdk
       GARRYSMOD_COMMON_REPOSITORY: https://github.com/danielga/garrysmod_common.git
       PREMAKE_VERSION: 5.0.0-beta8
-      CC: gcc-9
-      CXX: g++-9
-      AR: gcc-ar-9
-      NM: gcc-nm-9
-      RANLIB: gcc-ranlib-9
+      CC: gcc
+      CXX: g++
+      AR: gcc-ar
+      NM: gcc-nm
+      RANLIB: gcc-ranlib
 
     steps:
       - name: Check out source
         uses: actions/checkout@v4
+
+      - name: Install 32-bit build support
+        shell: bash
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y g++-multilib libc6-dev-i386
 
       - name: Fetch x64 build dependencies
         shell: bash
