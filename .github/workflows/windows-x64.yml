@@ -141,7 +141,7 @@ jobs:
 
   release:
     name: Publish GitHub Release
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref_type == 'tag'
     needs: [windows, linux]
     runs-on: ubuntu-22.04
 
